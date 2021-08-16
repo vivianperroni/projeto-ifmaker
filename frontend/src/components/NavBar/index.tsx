@@ -1,4 +1,4 @@
-import ImgIf from 'assets/img/if.JPG';
+import ImgIf from 'assets/img/if.jpg';
 
 const NavBar = () => {
     return (

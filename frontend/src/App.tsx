@@ -1,17 +1,8 @@
-import Calendario from "components/Calendario";
-import Footer from "components/Footer";
-import NavBar from "components/NavBar";
+import Routes from "Routes";
 
 function App() {
   return (
-    <>
-      <NavBar />
-      <div>
-        <h1 className="text-primary">IFMAKER</h1>
-        <Calendario/>
-      </div>
-      <Footer />
-    </>
+    <Routes/>
   );
 }
 
