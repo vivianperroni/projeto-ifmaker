@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ifms.ifmaker.dto.ProjetoDTO;
-import com.ifms.ifmaker.service.ProjetoService;
+import com.ifms.ifmaker.dto.AgendamentoDTO;
+import com.ifms.ifmaker.service.AgendamentoService;
 
 @RestController
-@RequestMapping(value = "/projetos")
-public class ProjetoController {
+@RequestMapping(value = "/agendamentos")
+public class AgendamentoController {
 
 	@Autowired
-	private ProjetoService service;
+	private AgendamentoService service;
 	
 	@GetMapping
-	public ResponseEntity<List<ProjetoDTO>> findAll(){
-		List<ProjetoDTO> list = service.findAll();
+	public ResponseEntity<List<AgendamentoDTO>> findAll(){
+		List<AgendamentoDTO> list = service.findAll();
 		return ResponseEntity.ok(list);
 	}
 }
