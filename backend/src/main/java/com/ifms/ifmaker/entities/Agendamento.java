@@ -1,5 +1,8 @@
 package com.ifms.ifmaker.entities;
 
+import java.sql.Date;
+import java.sql.Time;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,14 +16,14 @@ public class Agendamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String horario;
-	private String data;
+	private Time horario;
+	private Date data;
 	private String material;
 
 	public Agendamento() {
 	}
 
-	public Agendamento(Long id, String horario, String data, String material) {
+	public Agendamento(Long id, Time horario, Date data, String material) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
@@ -35,19 +38,19 @@ public class Agendamento {
 		this.id = id;
 	}
 
-	public String getHorario() {
+	public Time getHorario() {
 		return horario;
 	}
 
-	public void setHorario(String horario) {
+	public void setHorario(Time horario) {
 		this.horario = horario;
 	}
 
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
