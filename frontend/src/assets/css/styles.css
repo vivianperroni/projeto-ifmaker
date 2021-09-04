@@ -30,3 +30,82 @@ html, body {
 .text-primary {
     color: var(--color-primary) !important;
 }
+
+
+/*---------------------------CALENDARIO-----------------------------*/
+
+* {
+    box-sizing: border-box;
+}
+
+tr {
+    list-style-type: none;
+}
+
+body {
+    font-family: "Ubuntu", sans-serif;
+}
+
+.mes {
+    padding: 20px 25px;
+    width: 100%;
+    background: #415492;
+    text-align: center;
+}
+
+.mes tr {
+    margin: 0;
+    padding: 0;
+}
+
+.mes tr th {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.mes .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+.mes .next {
+    float: right;
+    padding-top: 10px;
+}
+
+.diadasemana {
+    margin: 0;
+    padding: 10px 0;
+    background-color: #ddd;
+}
+
+.diadasemana th {
+    display: inline-block;
+    width: 13.6%;
+    color: #666;
+    text-align: center;
+}
+
+.dias {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.dias td {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #777;
+}
+
+.dias td .active {
+    padding: 5px;
+    background: #CC0025;
+    color: white !important
+}
