@@ -19,6 +19,9 @@ html, body {
 }
 
 .footer {
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
     flex-shrink: 0;
     text-align: center;
 }
@@ -47,10 +50,11 @@ body {
 }
 
 .mes {
-    padding: 20px 25px;
+    padding: 15px 42%;
     width: 100%;
     background: #415492;
     text-align: center;
+    border-style: 0;
 }
 
 .mes tr {
@@ -83,7 +87,7 @@ body {
 
 .diadasemana th {
     display: inline-block;
-    width: 13.6%;
+    width: 14.27%;
     color: #666;
     text-align: center;
 }
@@ -97,11 +101,13 @@ body {
 .dias td {
     list-style-type: none;
     display: inline-block;
-    width: 13.6%;
+    width: 13.70%;
+    height: 37px;
     text-align: center;
-    margin-bottom: 5px;
-    font-size: 12px;
+    margin: 2px;
+    font-size: 15px;
     color: #777;
+    align-items: center;
 }
 
 .dias td .active {
