@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 import com.ifms.ifmaker.entities.Agendamento;
+import com.ifms.ifmaker.entities.enums.Dia;
 
 public class AgendamentoDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -13,15 +14,17 @@ public class AgendamentoDTO implements Serializable{
 	private Time horario;
 	private Date data;
 	private String material;
+	private Dia diaAgenda;
 	
 	public AgendamentoDTO() {
 	}
 	
-	public AgendamentoDTO(Long id, Time horario, Date data, String material) {
+	public AgendamentoDTO(Long id, Time horario, Date data, String material, Dia diaAgenda) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
 		this.material = material;
+		this.diaAgenda = diaAgenda;
 	}
 
 	public AgendamentoDTO(Agendamento entity) {
@@ -29,6 +32,7 @@ public class AgendamentoDTO implements Serializable{
 		horario = entity.getHorario();
 		data = entity.getData();
 		material = entity.getMaterial();
+		diaAgenda = entity.getDiaAgenda();
 	}
 
 	public Long getId() {
@@ -61,6 +65,14 @@ public class AgendamentoDTO implements Serializable{
 
 	public void setMaterial(String material) {
 		this.material = material;
+	}
+
+	public Dia getDiaAgenda() {
+		return diaAgenda;
+	}
+
+	public void setDiaAgenda(Dia diaAgenda) {
+		this.diaAgenda = diaAgenda;
 	}
 
 	

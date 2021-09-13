@@ -3,11 +3,16 @@ package com.ifms.ifmaker.entities;
 import java.sql.Date;
 import java.sql.Time;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.ifms.ifmaker.entities.enums.Dia;
 
 @Entity
 @Table(name = "tb_agendamentos")
@@ -19,15 +24,19 @@ public class Agendamento {
 	private Time horario;
 	private Date data;
 	private String material;
-
+	@Column(name = "dia_agenda")
+	@Enumerated(EnumType.ORDINAL)
+	private Dia diaAgenda;
+	
 	public Agendamento() {
 	}
 
-	public Agendamento(Long id, Time horario, Date data, String material) {
+	public Agendamento(Long id, Time horario, Date data, String material, Dia diaAgenda) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
 		this.material = material;
+		this.diaAgenda = diaAgenda;
 	}
 
 	public Long getId() {
@@ -60,6 +69,14 @@ public class Agendamento {
 
 	public void setMaterial(String material) {
 		this.material = material;
+	}
+
+	public Dia getDiaAgenda() {
+		return diaAgenda;
+	}
+
+	public void setDiaAgenda(Dia diaAgenda) {
+		this.diaAgenda = diaAgenda;
 	}
 
 	
