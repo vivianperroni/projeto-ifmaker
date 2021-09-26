@@ -115,3 +115,40 @@ body {
     background: #CC0025;
     color: white !important
 }
+
+/**************Bootstrap*************/
+
+.caixa {
+    background-color: #212529;
+    padding: 2%;    
+    color: #eee;
+    max-width: 60%;
+}
+
+.row {
+    margin: 1%;
+}
+
+.desc {
+    width: 100%;
+}
+
+.sub {
+    margin-top: 4%;
+}
+
+
+/*********************Botao Navbar*********************/
+
+.btn-nav{
+    padding: 0.3rem 1rem;
+    font-size: 1.1rem;
+    /*border-radius: 0.3rem;*/
+    text-decoration: none;
+    align-items: flex-end;
+
+}
+.btn-primary-nav {
+    color: #fff;
+    background-color: #415492;
+}
