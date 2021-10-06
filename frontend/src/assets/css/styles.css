@@ -125,6 +125,11 @@ body {
     max-width: 60%;
 }
 
+.term {
+    background-color: #dfdfdf;
+    padding: 2%;    
+}
+
 .row {
     margin: 1%;
 }

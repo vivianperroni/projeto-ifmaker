@@ -1,6 +1,7 @@
 import Calendario from "components/Calendario";
 import Footer from "components/Footer";
 import NavBar from "components/NavBar";
+import { Link } from "react-router-dom";
 
 const Calendar = () => {
     return (
@@ -48,7 +49,7 @@ const Calendar = () => {
                                 <td>12</td>
                                 <td>13</td>
                                 <td>14</td>
-                                <td><span className="active">15</span></td>
+                                <td><Link to="/Termo"><span className="active">15</span></Link></td>
                                 <td>16</td>
                                 <td>17</td>
                                 <td>18</td>
