@@ -2,6 +2,8 @@ package com.ifms.ifmaker.dto;
 
 import java.io.Serializable;
 
+import com.ifms.ifmaker.entities.Agendamento;
+import com.ifms.ifmaker.entities.Emprestimo;
 import com.ifms.ifmaker.entities.Projeto;
 
 public class ProjetoDTO implements Serializable{
@@ -14,11 +16,12 @@ public class ProjetoDTO implements Serializable{
 	private String coordenador;
 	private String material;
 	
+	
 	public ProjetoDTO() {
 	}
 
 	public ProjetoDTO(Long id, String titulo, String descricao, String integrante, String coordenador,
-			String material) {
+			String material, Emprestimo emprestimo, Agendamento agendamento) {
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;
