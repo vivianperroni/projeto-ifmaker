@@ -2,12 +2,15 @@ package com.ifms.ifmaker.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
+
 import com.ifms.ifmaker.entities.Material;
 
 public class MaterialDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	@NotBlank(message = "O campo Titulo é obrigatório")
 	private String titulo;
 	private String descricao;
 	

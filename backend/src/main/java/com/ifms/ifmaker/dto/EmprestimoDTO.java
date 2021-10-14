@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+
 import com.ifms.ifmaker.entities.Emprestimo;
 
 public class EmprestimoDTO implements Serializable{
@@ -11,7 +14,9 @@ public class EmprestimoDTO implements Serializable{
 
 	private Long id;
 	private Time horario;
+	@FutureOrPresent(message = "Não é possível cadastrar no passado!")
 	private Date data;
+	@NotBlank(message = "O campo Material é obrigatório")
 	private String material;
 	
 	public EmprestimoDTO() {

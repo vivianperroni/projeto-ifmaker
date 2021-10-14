@@ -2,6 +2,8 @@ package com.ifms.ifmaker.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
+
 import com.ifms.ifmaker.entities.Agendamento;
 import com.ifms.ifmaker.entities.Emprestimo;
 import com.ifms.ifmaker.entities.Projeto;
@@ -10,10 +12,14 @@ public class ProjetoDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	@NotBlank(message = "O campo Titulo é obrigatório")
 	private String titulo;
+	@NotBlank(message = "O campo Descrição é obrigatório")
 	private String descricao;
+	@NotBlank(message = "O campo Integrante é obrigatório")
 	private String integrante;
 	private String coordenador;
+	@NotBlank(message = "O campo Material é obrigatório")
 	private String material;
 	
 	

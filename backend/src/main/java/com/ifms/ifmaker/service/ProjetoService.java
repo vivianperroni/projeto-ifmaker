@@ -11,7 +11,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.ResourceAccessException;
 
 import com.ifms.ifmaker.dto.ProjetoDTO;
 import com.ifms.ifmaker.entities.Projeto;
@@ -35,7 +34,7 @@ public class ProjetoService {
 	@Transactional(readOnly = true)
 	public ProjetoDTO findById(Long id){
 		Optional<Projeto> obj = repository.findById(id);
-		Projeto projeto = obj.orElseThrow(() -> new ResourceAccessException("O projeto solicitado não doi localizado!"));
+		Projeto projeto = obj.orElseThrow(() -> new ResourceNotFoundException("O Id do Projeto solicitado não foi localizado!"));
 		return new ProjetoDTO(projeto);
 	}
 
@@ -55,7 +54,7 @@ public class ProjetoService {
 			projeto = repository.save(projeto);
 			return new ProjetoDTO(projeto);	
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("O id do Agendamento não foi localizado!");
+			throw new ResourceNotFoundException("Não é possível a atualização, pois o Id do Projeto não foi localizado!");
 		}
 	}
 	
@@ -63,9 +62,9 @@ public class ProjetoService {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("Não foi possível excluir o id do agendamento");
+			throw new ResourceNotFoundException("Não foi possível excluir o Id do Projeto, pois o mesmo não foi localizado!");
 		} catch (DataIntegrityViolationException e) {
-			throw new DataBaseException("Não foi possível excluir o Agendamento, pois o mesmo está em uso");
+			throw new DataBaseException("Não foi possível excluir o Id do Projeto, pois o mesmo está em uso!");
 		}
 	}
 	

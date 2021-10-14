@@ -11,7 +11,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.ResourceAccessException;
 
 import com.ifms.ifmaker.dto.MaterialDTO;
 import com.ifms.ifmaker.entities.Material;
@@ -35,7 +34,7 @@ public class MaterialService {
 	@Transactional(readOnly = true)
 	public MaterialDTO findById(Long id){
 		Optional<Material> obj = repository.findById(id);
-		Material material = obj.orElseThrow(() -> new ResourceAccessException("O material solicitado não doi localizado!"));
+		Material material = obj.orElseThrow(() -> new ResourceNotFoundException("O Id do Material solicitado não foi localizado!"));
 		return new MaterialDTO(material);
 	}
 	
@@ -55,7 +54,7 @@ public class MaterialService {
 			material = repository.save(material);
 			return new MaterialDTO(material);	
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("O id do Agendamento não foi localizado!");
+			throw new ResourceNotFoundException("Não é possível a atualização, pois o Id do Material não foi localizado!");
 		}
 	}
 	
@@ -63,9 +62,9 @@ public class MaterialService {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("Não foi possível excluir o id do agendamento");
+			throw new ResourceNotFoundException("Não foi possível excluir o Id do Material, pois o mesmo não foi localizado!");
 		} catch (DataIntegrityViolationException e) {
-			throw new DataBaseException("Não foi possível excluir o Agendamento, pois o mesmo está em uso");
+			throw new DataBaseException("Não foi possível excluir o Id do Material, pois o mesmo está em uso!");
 		}
 	}
 	

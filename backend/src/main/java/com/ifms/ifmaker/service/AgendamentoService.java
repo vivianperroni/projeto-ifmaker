@@ -11,7 +11,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.ResourceAccessException;
 
 import com.ifms.ifmaker.dto.AgendamentoDTO;
 import com.ifms.ifmaker.entities.Agendamento;
@@ -35,7 +34,7 @@ public class AgendamentoService {
 	@Transactional(readOnly = true)
 	public AgendamentoDTO findById(Long id){
 		Optional<Agendamento> obj = repository.findById(id);
-		Agendamento agendamento = obj.orElseThrow(() -> new ResourceAccessException("O agendamento solicitado não doi localizado!"));
+		Agendamento agendamento = obj.orElseThrow(() -> new ResourceNotFoundException("O Id do Agendamento solicitado não foi localizado!"));
 		return new AgendamentoDTO(agendamento);
 	}
 	
@@ -55,7 +54,7 @@ public class AgendamentoService {
 			agendamento = repository.save(agendamento);
 			return new AgendamentoDTO(agendamento);	
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("O id do Agendamento não foi localizado!");
+			throw new ResourceNotFoundException("Não é possível a atualização, pois o Id do Agendamento não foi localizado!");
 		}
 	}
 	
@@ -63,9 +62,9 @@ public class AgendamentoService {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("Não foi possível excluir o id do agendamento");
+			throw new ResourceNotFoundException("Não foi possível excluir o Id do Agendamento, pois o mesmo não foi localizado!");
 		} catch (DataIntegrityViolationException e) {
-			throw new DataBaseException("Não foi possível excluir o Agendamento, pois o mesmo está em uso");
+			throw new DataBaseException("Não foi possível excluir o Id do Agendamento, pois o mesmo está em uso!");
 		}
 	}
 	

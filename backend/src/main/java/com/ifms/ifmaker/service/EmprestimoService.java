@@ -11,7 +11,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.ResourceAccessException;
 
 import com.ifms.ifmaker.dto.EmprestimoDTO;
 import com.ifms.ifmaker.entities.Emprestimo;
@@ -35,7 +34,7 @@ public class EmprestimoService {
 	@Transactional(readOnly = true)
 	public EmprestimoDTO findById(Long id){
 		Optional<Emprestimo> obj = repository.findById(id);
-		Emprestimo emprestimo = obj.orElseThrow(() -> new ResourceAccessException("O emprestimo solicitado não doi localizado!"));
+		Emprestimo emprestimo = obj.orElseThrow(() -> new ResourceNotFoundException("O Id do Emprestimo solicitado não foi localizado!"));
 		return new EmprestimoDTO(emprestimo);
 	}
 	
@@ -55,7 +54,7 @@ public class EmprestimoService {
 			emprestimo = repository.save(emprestimo);
 			return new EmprestimoDTO(emprestimo);	
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("O id do Emprestimo não foi localizado!");
+			throw new ResourceNotFoundException("Não é possível a atualização, pois o Id do Emprestimo não foi localizado!");
 		}
 	}
 	
@@ -63,9 +62,9 @@ public class EmprestimoService {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			throw new ResourceNotFoundException("Não foi possível excluir o id do Emprestimo");
+			throw new ResourceNotFoundException("Não foi possível excluir o Id do Emprestimo, pois o mesmo não foi localizado!");
 		} catch (DataIntegrityViolationException e) {
-			throw new DataBaseException("Não foi possível excluir o Emprestimo, pois o mesmo está em uso");
+			throw new DataBaseException("Não foi possível excluir o Id do Emprestimo, pois o mesmo está em uso!");
 		}
 	}
 	
