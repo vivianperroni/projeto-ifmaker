@@ -8,6 +8,7 @@ import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 
 import com.ifms.ifmaker.entities.Agendamento;
+import com.ifms.ifmaker.entities.Projeto;
 import com.ifms.ifmaker.entities.enums.Dia;
 
 public class AgendamentoDTO implements Serializable{
@@ -20,16 +21,18 @@ public class AgendamentoDTO implements Serializable{
 	@NotBlank(message = "O campo Material é obrigatório")
 	private String material;
 	private Dia diaAgenda;
+	private Projeto projeto;
 	
 	public AgendamentoDTO() {
 	}
 	
-	public AgendamentoDTO(Long id, Time horario, Date data, String material, Dia diaAgenda) {
+	public AgendamentoDTO(Long id, Time horario, Date data, String material, Dia diaAgenda, Projeto projeto) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
 		this.material = material;
 		this.diaAgenda = diaAgenda;
+		this.projeto = projeto;
 	}
 
 	public AgendamentoDTO(Agendamento entity) {
@@ -38,6 +41,7 @@ public class AgendamentoDTO implements Serializable{
 		data = entity.getData();
 		material = entity.getMaterial();
 		diaAgenda = entity.getDiaAgenda();
+		projeto = entity.getProjeto();
 	}
 
 	public Long getId() {
@@ -78,6 +82,14 @@ public class AgendamentoDTO implements Serializable{
 
 	public void setDiaAgenda(Dia diaAgenda) {
 		this.diaAgenda = diaAgenda;
+	}
+
+	public Projeto getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
 	}
 
 	

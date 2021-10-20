@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotBlank;
 
-import com.ifms.ifmaker.entities.Agendamento;
-import com.ifms.ifmaker.entities.Emprestimo;
 import com.ifms.ifmaker.entities.Projeto;
 
 public class ProjetoDTO implements Serializable{
@@ -27,13 +25,14 @@ public class ProjetoDTO implements Serializable{
 	}
 
 	public ProjetoDTO(Long id, String titulo, String descricao, String integrante, String coordenador,
-			String material, Emprestimo emprestimo, Agendamento agendamento) {
+			String material) {
 		this.id = id;
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.integrante = integrante;
 		this.coordenador = coordenador;
 		this.material = material;
+
 	}
 	
 	public ProjetoDTO(Projeto entity) {
@@ -92,6 +91,7 @@ public class ProjetoDTO implements Serializable{
 	public void setMaterial(String material) {
 		this.material = material;
 	}
+
 	
 	
 }

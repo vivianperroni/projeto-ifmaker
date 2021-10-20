@@ -8,6 +8,7 @@ import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 
 import com.ifms.ifmaker.entities.Emprestimo;
+import com.ifms.ifmaker.entities.Material;
 
 public class EmprestimoDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -17,12 +18,12 @@ public class EmprestimoDTO implements Serializable{
 	@FutureOrPresent(message = "Não é possível cadastrar no passado!")
 	private Date data;
 	@NotBlank(message = "O campo Material é obrigatório")
-	private String material;
+	private Material material;
 	
 	public EmprestimoDTO() {
 	}
 
-	public EmprestimoDTO(Long id, Time horario, Date data, String material) {
+	public EmprestimoDTO(Long id, Time horario, Date data, Material material) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
@@ -60,11 +61,11 @@ public class EmprestimoDTO implements Serializable{
 		this.data = data;
 	}
 
-	public String getMaterial() {
+	public Material getMaterial() {
 		return material;
 	}
 
-	public void setMaterial(String material) {
+	public void setMaterial(Material material) {
 		this.material = material;
 	}
 

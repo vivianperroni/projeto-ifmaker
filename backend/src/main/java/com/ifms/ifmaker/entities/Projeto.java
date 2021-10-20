@@ -1,16 +1,19 @@
 package com.ifms.ifmaker.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_projetos")
+@Table(name = "tb_projeto")
 public class Projeto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -27,6 +30,9 @@ public class Projeto implements Serializable{
 	private String coordenador;
 	@Column(columnDefinition = "TEXT")
 	private String material;
+	@OneToMany
+	@JoinColumn(name = "id_emprestimo")
+	private List<Emprestimo> emprestimo;
 
 	public Projeto() {
 	}
@@ -90,8 +96,14 @@ public class Projeto implements Serializable{
 		this.material = material;
 	}
 
+	public List<Emprestimo> getEmprestimo() {
+		return emprestimo;
+	}
 
-	
+	public void setEmprestimo(List<Emprestimo> emprestimo) {
+		this.emprestimo = emprestimo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

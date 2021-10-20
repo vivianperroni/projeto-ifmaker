@@ -11,35 +11,42 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.ifms.ifmaker.entities.enums.Dia;
 
 @Entity
-@Table(name = "tb_agendamentos")
+@Table(name = "tb_agendamento")
 public class Agendamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name = "horario")
 	private Time horario;
+	@Column(name = "data")
 	private Date data;
-	@Column(columnDefinition = "TEXT")
+	@Column(name = "material")
 	private String material;
 	@Column(name = "dia_agenda")
 	@Enumerated(EnumType.ORDINAL)
 	private Dia diaAgenda;
+	@ManyToOne
+	@JoinColumn(name = "id_projeto")
+	private Projeto projeto;
 	
-	public Agendamento() {
-	}
+	public Agendamento() { }
 
-	public Agendamento(Long id, Time horario, Date data, String material, Dia diaAgenda) {
+	public Agendamento(Long id, Time horario, Date data, String material, Dia diaAgenda, Projeto projeto) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
 		this.material = material;
 		this.diaAgenda = diaAgenda;
+		this.projeto = projeto;
 	}
 
 	public Long getId() {
@@ -82,6 +89,13 @@ public class Agendamento implements Serializable{
 		this.diaAgenda = diaAgenda;
 	}
 
+	public Projeto getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
+	}
 
 	@Override
 	public int hashCode() {

@@ -8,10 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_emprestimos")
+@Table(name = "tb_emprestimo")
 public class Emprestimo implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -20,12 +22,14 @@ public class Emprestimo implements Serializable{
 	private Long id;
 	private Time horario; 
 	private Date data;
-	private String material;
+	@ManyToOne
+	@JoinColumn(name = "id_material")
+	private Material material;
 
 	public Emprestimo() {
 	}
 
-	public Emprestimo(Long id, Time horario, Date data, String material) {
+	public Emprestimo(Long id, Time horario, Date data, Material material) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
@@ -56,11 +60,11 @@ public class Emprestimo implements Serializable{
 		this.data = data;
 	}
 
-	public String getMaterial() {
+	public Material getMaterial() {
 		return material;
 	}
 
-	public void setMaterial(String material) {
+	public void setMaterial(Material material) {
 		this.material = material;
 	}
 

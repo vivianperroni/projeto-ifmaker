@@ -27,7 +27,7 @@ public class AgendamentoService {
 	@Transactional(readOnly = true)
 	public List<AgendamentoDTO> findAll(){
 		List<Agendamento> list = repository.findAll();
-		return list.stream().map(entity -> new AgendamentoDTO(entity))
+		return list.stream().map(agendamento -> new AgendamentoDTO(agendamento))
 				.collect(Collectors.toList());
 	}
 	
@@ -66,6 +66,7 @@ public class AgendamentoService {
 		} catch (DataIntegrityViolationException e) {
 			throw new DataBaseException("Não foi possível excluir o Id do Agendamento, pois o mesmo está em uso!");
 		}
+			repository.deleteById(id);
 	}
 	
 	private void copyDtoToEntity(AgendamentoDTO dto, Agendamento agendamento) {
@@ -73,6 +74,7 @@ public class AgendamentoService {
 		agendamento.setData(dto.getData());
 		agendamento.setMaterial(dto.getMaterial());
 		agendamento.setDiaAgenda(dto.getDiaAgenda());
+		agendamento.setProjeto(dto.getProjeto());
 	}
 	
 }

@@ -10,7 +10,7 @@ public enum Dia {
 	private int id;
 	private String dia;
 	
-	private Dia(int id, String dia) {
+	Dia(int id, String dia) {
 		this.id = id;
 		this.dia = dia;
 	}
