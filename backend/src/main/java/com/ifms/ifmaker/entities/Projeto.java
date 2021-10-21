@@ -8,9 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_projeto")
@@ -30,9 +31,12 @@ public class Projeto implements Serializable{
 	private String coordenador;
 	@Column(columnDefinition = "TEXT")
 	private String material;
-	@OneToMany
-	@JoinColumn(name = "id_emprestimo")
-	private List<Emprestimo> emprestimo;
+	@JsonIgnore
+	@OneToMany(mappedBy = "projeto")
+	private List<Agendamento> agendamento;
+	@JsonIgnore
+	@OneToMany(mappedBy = "projeto")
+	private List<Emprestimo> emprestimo;		
 
 	public Projeto() {
 	}
@@ -94,6 +98,14 @@ public class Projeto implements Serializable{
 
 	public void setMaterial(String material) {
 		this.material = material;
+	}
+	
+	public List<Agendamento> getAgendamento() {
+		return agendamento;
+	}
+
+	public void setAgendamento(List<Agendamento> agendamento) {
+		this.agendamento = agendamento;
 	}
 
 	public List<Emprestimo> getEmprestimo() {

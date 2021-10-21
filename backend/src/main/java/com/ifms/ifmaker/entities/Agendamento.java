@@ -1,8 +1,8 @@
 package com.ifms.ifmaker.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Time;
+import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ifms.ifmaker.entities.enums.Dia;
 
 @Entity
@@ -28,19 +29,20 @@ public class Agendamento implements Serializable{
 	@Column(name = "horario")
 	private Time horario;
 	@Column(name = "data")
-	private Date data;
+	private Instant data;
 	@Column(name = "material")
 	private String material;
 	@Column(name = "dia_agenda")
 	@Enumerated(EnumType.ORDINAL)
 	private Dia diaAgenda;
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_projeto")
 	private Projeto projeto;
 	
 	public Agendamento() { }
 
-	public Agendamento(Long id, Time horario, Date data, String material, Dia diaAgenda, Projeto projeto) {
+	public Agendamento(Long id, Time horario, Instant data, String material, Dia diaAgenda, Projeto projeto) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
@@ -65,11 +67,11 @@ public class Agendamento implements Serializable{
 		this.horario = horario;
 	}
 
-	public Date getData() {
+	public Instant getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(Instant data) {
 		this.data = data;
 	}
 

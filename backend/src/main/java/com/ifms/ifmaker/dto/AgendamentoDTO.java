@@ -1,8 +1,8 @@
 package com.ifms.ifmaker.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Time;
+import java.time.Instant;
 
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
@@ -17,7 +17,7 @@ public class AgendamentoDTO implements Serializable{
 	private Long id;
 	private Time horario;
 	@FutureOrPresent(message = "Não é possível cadastrar no passado!")
-	private Date data;
+	private Instant data;
 	@NotBlank(message = "O campo Material é obrigatório")
 	private String material;
 	private Dia diaAgenda;
@@ -26,7 +26,7 @@ public class AgendamentoDTO implements Serializable{
 	public AgendamentoDTO() {
 	}
 	
-	public AgendamentoDTO(Long id, Time horario, Date data, String material, Dia diaAgenda, Projeto projeto) {
+	public AgendamentoDTO(Long id, Time horario, Instant data, String material, Dia diaAgenda, Projeto projeto) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
@@ -60,11 +60,11 @@ public class AgendamentoDTO implements Serializable{
 		this.horario = horario;
 	}
 
-	public Date getData() {
+	public Instant getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(Instant data) {
 		this.data = data;
 	}
 

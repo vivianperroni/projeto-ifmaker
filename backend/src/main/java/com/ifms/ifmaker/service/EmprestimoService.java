@@ -71,6 +71,8 @@ public class EmprestimoService {
 	private void copyDtoToEntity(EmprestimoDTO dto, Emprestimo emprestimo) {
 		emprestimo.setHorario(dto.getHorario());
 		emprestimo.setData(dto.getData());
+		emprestimo.setProjeto(dto.getProjeto());
 		emprestimo.setMaterial(dto.getMaterial());
+
 	}
 }

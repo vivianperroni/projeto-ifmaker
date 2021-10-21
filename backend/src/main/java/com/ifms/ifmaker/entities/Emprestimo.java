@@ -23,17 +23,22 @@ public class Emprestimo implements Serializable{
 	private Time horario; 
 	private Date data;
 	@ManyToOne
+	@JoinColumn(name = "id_projeto")
+	private Projeto projeto;
+	@ManyToOne
 	@JoinColumn(name = "id_material")
 	private Material material;
 
 	public Emprestimo() {
 	}
 
-	public Emprestimo(Long id, Time horario, Date data, Material material) {
+	public Emprestimo(Long id, Time horario, Date data, Projeto projeto, Material material) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
+		this.projeto = projeto;
 		this.material = material;
+
 	}
 
 	public Long getId() {
@@ -59,7 +64,15 @@ public class Emprestimo implements Serializable{
 	public void setData(Date data) {
 		this.data = data;
 	}
+	
+	public Projeto getProjeto() {
+		return projeto;
+	}
 
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
+	}
+	
 	public Material getMaterial() {
 		return material;
 	}
