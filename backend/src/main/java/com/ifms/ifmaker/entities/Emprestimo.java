@@ -1,8 +1,8 @@
 package com.ifms.ifmaker.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Time;
+import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +21,7 @@ public class Emprestimo implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Time horario; 
-	private Date data;
+	private Instant data;
 	@ManyToOne
 	@JoinColumn(name = "id_projeto")
 	private Projeto projeto;
@@ -32,7 +32,7 @@ public class Emprestimo implements Serializable{
 	public Emprestimo() {
 	}
 
-	public Emprestimo(Long id, Time horario, Date data, Projeto projeto, Material material) {
+	public Emprestimo(Long id, Time horario, Instant data, Projeto projeto, Material material) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
@@ -57,11 +57,11 @@ public class Emprestimo implements Serializable{
 		this.horario = horario;
 	}
 
-	public Date getData() {
+	public Instant getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(Instant data) {
 		this.data = data;
 	}
 	
