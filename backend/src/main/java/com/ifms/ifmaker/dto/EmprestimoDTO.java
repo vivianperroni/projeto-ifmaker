@@ -1,8 +1,8 @@
 package com.ifms.ifmaker.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Time;
-import java.time.Instant;
 
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
@@ -17,7 +17,7 @@ public class EmprestimoDTO implements Serializable{
 	private Long id;
 	private Time horario;
 	@FutureOrPresent(message = "Não é possível cadastrar no passado!")
-	private Instant data;
+	private Date data;
 	@NotBlank(message = "O campo Material é obrigatório")
 	private Projeto projeto;
 	private Material material;
@@ -26,7 +26,7 @@ public class EmprestimoDTO implements Serializable{
 	public EmprestimoDTO() {
 	}
 
-	public EmprestimoDTO(Long id, Time horario, Instant data, Projeto projeto, Material material) {
+	public EmprestimoDTO(Long id, Time horario, Date data, Projeto projeto, Material material) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
@@ -59,11 +59,11 @@ public class EmprestimoDTO implements Serializable{
 		this.horario = horario;
 	}
 
-	public Instant getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(Instant data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 

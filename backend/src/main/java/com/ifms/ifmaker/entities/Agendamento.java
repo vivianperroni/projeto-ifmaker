@@ -1,8 +1,8 @@
 package com.ifms.ifmaker.entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Time;
-import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +29,7 @@ public class Agendamento implements Serializable{
 	@Column(name = "horario")
 	private Time horario;
 	@Column(name = "data")
-	private Instant data;
+	private Date data;
 	@Column(name = "material")
 	private String material;
 	@Column(name = "dia_agenda")
@@ -42,7 +42,7 @@ public class Agendamento implements Serializable{
 	
 	public Agendamento() { }
 
-	public Agendamento(Long id, Time horario, Instant data, String material, Dia diaAgenda, Projeto projeto) {
+	public Agendamento(Long id, Time horario, Date data, String material, Dia diaAgenda, Projeto projeto) {
 		this.id = id;
 		this.horario = horario;
 		this.data = data;
@@ -67,11 +67,11 @@ public class Agendamento implements Serializable{
 		this.horario = horario;
 	}
 
-	public Instant getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(Instant data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
